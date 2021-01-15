@@ -1,7 +1,0 @@
-C:\Users\Oxi\source\repos\Math\bin\Debug\Math.exe.config
-C:\Users\Oxi\source\repos\Math\bin\Debug\Math.exe
-C:\Users\Oxi\source\repos\Math\bin\Debug\Math.pdb
-C:\Users\Oxi\source\repos\Math\obj\Debug\Math.csprojAssemblyReference.cache
-C:\Users\Oxi\source\repos\Math\obj\Debug\Math.csproj.CoreCompileInputs.cache
-C:\Users\Oxi\source\repos\Math\obj\Debug\Math.exe
-C:\Users\Oxi\source\repos\Math\obj\Debug\Math.pdb
