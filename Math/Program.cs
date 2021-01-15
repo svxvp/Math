@@ -31,7 +31,7 @@ namespace Math
 
         public Complex Add (int a)
         {
-            Complex x = new Complex(this.Real + a, this.Imaginary + a);
+            Complex x = new Complex(this.Real + a, this.Imaginary);
             return x;
         }
     }
