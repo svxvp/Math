@@ -1,33 +1,30 @@
-﻿using System;
-using System.Diagnostics;
-
+using System;
 
 namespace Sort
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Sort sort = new Sort();
-            var Watch = Stopwatch.StartNew();
-            int[] array = new int[15000];
+            
+            int[] array = new int[20];
             Random rnd = new Random();
-
             for (int i = 0; i < array.Length; i++)
-            { array[i] = rnd.Next(); }
-            sort.SelectionSorting(array);
-            Console.WriteLine("Time: {0} ms", Watch.ElapsedMilliseconds);
+            { array[i] = rnd.Next(1,51); }
+            
+            Console.WriteLine(String.Join(",",array));
+            sort.SelectionSort(array);
+            sort.PrintSortMassive(array);
             Console.ReadKey();
-
-
         }
     }
-
+    
     public class Sort
     {
-        public void SelectionSorting(int[]data) 
+        public int[] SelectionSort(int[]data) 
         {
-            int temp = 0;
+            int temp;
            
             for (int i = 0;i<data.Length-1;i++)
             {
@@ -41,13 +38,10 @@ namespace Sort
                     }
                 }
             }
-            
-            Console.WriteLine(string.Join(",",data));
-            
-           
+            return data;
         }
 
-        public void InsertionSorting(int[]data)
+        public int[] InsertionSort(int[]data)
         {
             for (int i = 1; i < data.Length; i++)
             {
@@ -60,9 +54,43 @@ namespace Sort
                 }
                 data[j] = cur;
             }
-            Console.WriteLine(string.Join(",", data));
+
+            return data;
+           
         }
 
+        protected int[] QuickSorting(int[]data, long firstItem,long lastItem)
+        {
+            double p = data[(lastItem - firstItem) / 2 + firstItem]; 
+            int temp;
+            long i = firstItem, j = lastItem;
+            while (i <= j)
+            {
+                while (data[i] < p && i <= lastItem) ++i;
+                while (data[j] > p && j >= firstItem) --j;
+                if (i <= j)
+                {
+                    temp = data[i];
+                    data[i] = data[j];
+                    data[j] = temp;
+                    ++i; --j;
+                }
+            }
+            if (j > firstItem) QuickSorting(data, firstItem, j);
+            if (i < lastItem) QuickSorting(data, i, lastItem);
+            return data;
+        }
+        public int[] QuickSort(int []data)
+        {
+            return QuickSorting(data, 0, data.Length - 1);
+        }
+
+
+        public void PrintSortMassive(int[]data)
+        {   
+            Console.WriteLine("Отсортированный массив\n"+String.Join(",",data));
+        }
       
     }
 }
+
